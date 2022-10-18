@@ -34,6 +34,7 @@ class Calculator {
     }
 
     addOperator(operator) {
+        if (this.currentNumber === '') return;
         this.operationList.push(this.currentNumber);
         this.operationList.push(operator);
         this.currentNumber = '';
