@@ -1,12 +1,13 @@
 class Calculator {
     constructor() {
-        this.operationList = [];
-        this.currentNumber = '';
+        this.operationList = []; // a list of operands and operators
+        this.currentNumber = ''; // the last operand
+
         this.updateDisplay();
     }
 
     clear() {
-        this.operationList = [];
+        this.operationList = []; 
         this.currentNumber = '';
         
         this.updateDisplay();
@@ -41,7 +42,36 @@ class Calculator {
     }
 
     claculate() {
+        if (this.operationList.length < 2 || this.currentNumber == '') return;
 
+        // add currenNumber to the list
+        this.operationList.push(this.currentNumber);
+        this.currentNumber = '';
+        // handle all multiply and division first
+        let index = this.operationList.findIndex(item => item == '*' || item == '/');
+        while (index != -1){
+            if (this.operationList[index] === '*'){
+                this.operationList[index-1] = parseFloat(this.operationList[index-1]) * parseFloat(this.operationList[index+1]);
+            } else{
+                this.operationList[index-1] = parseFloat(this.operationList[index-1]) / parseFloat(this.operationList[index+1]);
+            }
+            this.operationList.splice(index, 2);
+            index = this.operationList.findIndex(item => item == '*' || item == '/');
+        }
+
+        index = this.operationList.findIndex(item => item == '+' || item == '-');
+        while (index != -1){
+            if (this.operationList[index] === '+'){
+                this.operationList[index-1] = parseFloat(this.operationList[index-1]) + parseFloat(this.operationList[index+1]);
+            } else{
+                this.operationList[index-1] = parseFloat(this.operationList[index-1]) - parseFloat(this.operationList[index+1]);
+            }
+            this.operationList.splice(index, 2);
+            index = this.operationList.findIndex(item => item == '+' || item == '-');
+        }
+
+        this.currentNumber = this.operationList.pop().toString();
+        this.updateDisplay();
     }
 
     updateDisplay() {
