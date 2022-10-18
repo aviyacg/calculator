@@ -1,4 +1,3 @@
-# calculator
 
 # This is another calculator like many others except the following features:
 1. Allow multiple operands and operations in calculation
