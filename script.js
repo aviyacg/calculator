@@ -49,6 +49,8 @@ class Calculator {
         this.operationList.push(this.currentNumber);
         this.currentNumber = '';
         // handle all multiply and division first
+        // multiplication sign - "\u00D7"
+        // division sign - "\u00F7"
         let index = this.operationList.findIndex(item => item == "\u00D7" || item == "\u00F7");
         while (index != -1){
             if (this.operationList[index] === "\u00D7"){
@@ -56,10 +58,10 @@ class Calculator {
             } else{
                 this.operationList[index-1] = parseFloat(this.operationList[index-1]) / parseFloat(this.operationList[index+1]);
             }
-            this.operationList.splice(index, 2);
+            this.operationList.splice(index, 2); // remove opertaor and second operand from the list
             index = this.operationList.findIndex(item => item == "\u00D7" || item == "\u00F7");
         }
-
+        // handle addition and subtruction
         index = this.operationList.findIndex(item => item == '+' || item == '-');
         while (index != -1){
             if (this.operationList[index] === '+'){
@@ -67,11 +69,11 @@ class Calculator {
             } else{
                 this.operationList[index-1] = parseFloat(this.operationList[index-1]) - parseFloat(this.operationList[index+1]);
             }
-            this.operationList.splice(index, 2);
+            this.operationList.splice(index, 2); // remove opertaor and second operand from the list
             index = this.operationList.findIndex(item => item == '+' || item == '-');
         }
 
-        this.currentNumber = this.operationList.pop().toString();
+        this.currentNumber = this.operationList.pop().toString(); // move result from operationList[0] to currentNumber
         this.updateDisplay();
     }
 
