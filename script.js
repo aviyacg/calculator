@@ -49,15 +49,15 @@ class Calculator {
         this.operationList.push(this.currentNumber);
         this.currentNumber = '';
         // handle all multiply and division first
-        let index = this.operationList.findIndex(item => item == '*' || item == '/');
+        let index = this.operationList.findIndex(item => item == "\u00D7" || item == "\u00F7");
         while (index != -1){
-            if (this.operationList[index] === '*'){
+            if (this.operationList[index] === "\u00D7"){
                 this.operationList[index-1] = parseFloat(this.operationList[index-1]) * parseFloat(this.operationList[index+1]);
             } else{
                 this.operationList[index-1] = parseFloat(this.operationList[index-1]) / parseFloat(this.operationList[index+1]);
             }
             this.operationList.splice(index, 2);
-            index = this.operationList.findIndex(item => item == '*' || item == '/');
+            index = this.operationList.findIndex(item => item == "\u00D7" || item == "\u00F7");
         }
 
         index = this.operationList.findIndex(item => item == '+' || item == '-');
