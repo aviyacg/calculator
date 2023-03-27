@@ -6,9 +6,4 @@ built with vanilla js as a part of "The Odin Project" curriculum
 2. The calculation will execute only when calc button is clicked
 3. Calculate with respect to mathematical operation order
 
-Some features to add in the future:
-1. add +/- button to handle negative numbers
-2. add brackets
-3. some more advanced math operations
-
-have fun calculating :-)
+[try it on github pages](https://aviyacg.github.io/calculator/), have fun calculating :-)
