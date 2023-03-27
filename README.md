@@ -1,4 +1,5 @@
-# A vanilla js calculator
+# Calculator
+built with vanilla js as a part of "The Odin Project" curriculum
 
 ## This is another calculator like many others except the following features:
 1. Allow multiple operands and operations in calculation
